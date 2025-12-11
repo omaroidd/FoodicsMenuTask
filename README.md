@@ -68,10 +68,10 @@ git clone https://github.com/omaroidd/FoodicsMenuTask.git
 3. Build and run the application
    
 ## Screenshots
-<img width="1527" height="3289" alt="Screenshot_20251211_100721" src="https://github.com/user-attachments/assets/02e7b553-033d-4a69-8d9b-b4a1031bc910" />
+<img width="1527" height="3289" alt="Screenshot_20251211_211143" src="https://github.com/user-attachments/assets/3cdc6956-c68b-402e-9a3d-623a0b76acba" />
+<br><br><br>
+<img width="1527" height="3289" alt="Screenshot_20251211_211203" src="https://github.com/user-attachments/assets/bd3fed90-b082-4a7a-9caf-378a55694770" />
 
-
-<img width="1527" height="3289" alt="Screenshot_20251211_100800" src="https://github.com/user-attachments/assets/cdf1fe2f-71f4-4b39-86b9-55208e434d56" />
 
 ## License
 MIT License

@@ -23,6 +23,6 @@ val useCaseModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { ProductsViewModel(get(), get(), get(), get()) }
+    viewModel { ProductsViewModel(get(), get(), get(), get(), get()) }
     viewModel { OrderViewModel(get(), get(), get()) }
 }

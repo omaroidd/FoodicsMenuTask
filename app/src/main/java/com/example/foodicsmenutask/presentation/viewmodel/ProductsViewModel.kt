@@ -3,7 +3,9 @@ package com.example.foodicsmenutask.presentation.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.foodicsmenutask.domain.model.Category
 import com.example.foodicsmenutask.domain.model.Product
+import com.example.foodicsmenutask.domain.usecase.GetCategoriesUseCase
 import com.example.foodicsmenutask.domain.usecase.GetProductsUseCase
 import com.example.foodicsmenutask.domain.usecase.RefreshCategoriesUseCase
 import com.example.foodicsmenutask.domain.usecase.RefreshProductsUseCase
@@ -20,7 +22,8 @@ class ProductsViewModel(
     private val getProductsUseCase: GetProductsUseCase,
     private val searchProductsUseCase: SearchProductsUseCase,
     private val refreshProductsUseCase: RefreshProductsUseCase,
-    private val refreshCategoriesUseCase: RefreshCategoriesUseCase
+    private val refreshCategoriesUseCase: RefreshCategoriesUseCase,
+    private val getCategoriesUseCase: GetCategoriesUseCase
 ) : ViewModel() {
 
     private val _query = MutableStateFlow("")
@@ -28,6 +31,16 @@ class ProductsViewModel(
 
     private val _loading = MutableStateFlow(false)
     val loading: StateFlow<Boolean> = _loading
+
+    private val _selectedCategoryId = MutableStateFlow<String?>(null)
+    val selectedCategoryId: StateFlow<String?> = _selectedCategoryId
+
+    val categories: StateFlow<List<Category>> = getCategoriesUseCase()
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            emptyList()
+        )
 
     val products: StateFlow<List<Product>> =
         _query
@@ -67,6 +80,10 @@ class ProductsViewModel(
 
     fun setQuery(q: String) {
         _query.value = q
+    }
+
+    fun selectCategory(categoryId: String?) {
+        _selectedCategoryId.value = categoryId
     }
 }
 

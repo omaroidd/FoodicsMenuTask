@@ -9,11 +9,6 @@ import io.ktor.client.request.*
 import kotlinx.serialization.json.Json
 
 class RemoteDataSource(private val client: HttpClient) {
-    private val json = Json {
-        ignoreUnknownKeys = true
-        isLenient = true
-    }
-
     suspend fun fetchCategories(): List<CategoryDto> {
         return client.get(AppConfig.BASE_URL + AppConfig.CATEGORIES_PATH).body()
     }

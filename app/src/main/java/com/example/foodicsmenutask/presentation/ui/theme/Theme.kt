@@ -1,6 +1,5 @@
 package com.example.foodicsmenutask.presentation.ui.theme
 
-
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -17,21 +16,25 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFFBB86FC),
+    primary = Color(0xFF3F028F),
     secondary = Color(0xFF03DAC6),
-    tertiary = Color(0xFF1F6DEF)
+    tertiary = Color(0xFF1F6DEF),
+    background = Color(0xFFF5F5F5),
+    surface = Color(0xFFFFFFFF)
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF6750a4),
+    primary = Color(0xFF3F028F),
     secondary = Color(0xFF625b71),
-    tertiary = Color(0xFF7D5260)
+    tertiary = Color(0xFF7D5260),
+    background = Color(0xFFF5F5F5),
+    surface = Color(0xFFFFFFFF)
 )
 
 @Composable
 fun MenuAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -39,6 +42,7 @@ fun MenuAppTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
@@ -47,7 +51,12 @@ fun MenuAppTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = Color.White.toArgb()
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                window.decorView.systemUiVisibility =
+                    android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            }
         }
     }
 

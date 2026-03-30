@@ -1,6 +1,6 @@
-# Foodics Android Coding Challenge
+# Menu Food App Android
 
-This is the Android application developed for the Foodics coding challenge. The app allows users to browse categories, view products, and add products to an order.
+This is the Android application. The app allows users to browse categories, view products, and add products to an order.
 
 ## Features
 - Browse categories and products
